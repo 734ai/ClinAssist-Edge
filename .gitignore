@@ -1,0 +1,204 @@
+# ClinAssist Edge - Git Ignore Configuration
+# This file excludes development, testing, and sensitive files from version control
+
+# ==================== SENSITIVE FILES ====================
+# API Keys and Credentials
+huggingface-api-key
+kaggle.json
+.env
+.env.local
+*.pem
+*.key
+*.privatekey
+*.keystore
+credentials.json
+
+# ==================== DEVELOPMENT MARKDOWN FILES ====================
+# Task tracking and project planning documents
+PROJECT_STATUS.md
+PROJECT_ADVANCEMENT.md
+COMPETITION_READINESS.md
+READY_FOR_SUBMISSION.md
+SUBMISSION_GUIDE.md
+KAGGLE_SETUP.md
+DEPLOYMENT.md
+EXECUTIVE_SUMMARY.md
+FINAL_TEST_REPORT.md
+IMPLEMENTATION_SUMMARY.md
+NAVIGATION_GUIDE.md
+MODERN_UI_DELIVERY_SUMMARY.txt
+MODERN_UI_INDEX.md
+MODERN_UI_README.md
+MODERN_UI_GUIDE.md
+MODERN_UI_QUICK_REFERENCE.md
+MODERN_UI_DESIGN_SYSTEM.md
+MODERN_UI_COMPARISON.md
+MODERN_UI_IMPLEMENTATION.md
+README_ADVANCED.md
+ADVANCED_FEATURES.md
+project-about.md
+research00.md
+idea00.md
+
+# Development documents
+demo/demo_script.md
+demo/demo_script_final.md
+demo/writeup.md
+prompts/templates.md
+
+# ==================== LOG FILES & DATABASES ====================
+*.log
+clinassist_errors.log
+clinassist_modern.log
+audit_log.txt
+*.db
+*.sqlite
+*.sqlite3
+clinical_outcomes.db
+clinician_feedback.db
+
+# ==================== PYTHON CACHE ====================
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# ==================== VIRTUAL ENVIRONMENTS ====================
+.venv/
+venv/
+ENV/
+env/
+.venv-*
+venv-*
+
+# ==================== IDE & EDITOR FILES ====================
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+.project
+.pydevproject
+.settings/
+*.sublime-project
+*.sublime-workspace
+.classpath
+.factorypath
+
+# ==================== JUPYTER NOTEBOOKS ====================
+.ipynb_checkpoints
+*.ipynb
+
+# ==================== TESTING ====================
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+.hypothesis/
+test_results.xml
+coverage.xml
+
+# ==================== PACKAGE MANAGERS ====================
+.pip-cache/
+.pipenv/
+Pipfile.lock
+
+# ==================== TESTING & VERIFICATION SCRIPTS ====================
+# These are generated during development and shouldn't be committed
+test_local_integration.py
+verify_production_readiness.py
+completion_report.py
+test_kaggle_compatibility.py
+prepare_kaggle.py
+test_*.py (except for core test files)
+
+# ==================== DATA FILES ====================
+synthetic_data.jsonl
+*.csv
+*.tsv
+*.json (except for package.json, tsconfig.json, etc.)
+*.pkl
+*.pickle
+*.npy
+*.npz
+
+# ==================== TEMPORARY FILES ====================
+*.tmp
+*.temp
+*.bak
+*.swp
+*.~
+*.orig
+
+# ==================== OS SPECIFIC ====================
+.DS_Store
+Thumbs.db
+.AppleDouble
+.LSOverride
+._*
+
+# ==================== MODEL FILES ====================
+lora_fine_tuned_model/
+*.pt
+*.pth
+*.ckpt
+model_checkpoints/
+weights/
+
+# ==================== BUILD ARTIFACTS ====================
+.gradle/
+.maven/
+target/
+*.war
+*.jar
+
+# ==================== DOCUMENTATION BUILD ====================
+docs/_build/
+docs/.buildinfo
+site/
+
+# ==================== IGNORE SUBMISSION DIRECTORY (contains copies)  ====================
+# The kaggle_submission folder contains copies of production files
+# Only commit root and app/ folder directly
+# kaggle_submission/ is excluded to avoid duplication
+
+# ==================== EXCEPTION RULES ====================
+# These rules override the ignore patterns above for important files
+
+# DO COMMIT:
+# - app/ folder (all files)
+# - model/ folder (all files)  
+# - utils/ folder (all files)
+# - Core configuration files
+# - Core documentation (README.md, LICENSE, etc.)
+# - requirements*.txt (but not in venv)
+# - Launcher and run scripts
+
+# DO NOT COMMIT:
+# - .venv/ virtual environment
+# - __pycache__ directories
+# - API keys and credentials
+# - Development/planning markdown files
+# - Test and verification scripts
+# - Generated logs and databases
+# - IDE configuration

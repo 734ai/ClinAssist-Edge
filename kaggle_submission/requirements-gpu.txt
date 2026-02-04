@@ -1,0 +1,13 @@
+# ClinAssist Edge - GPU Support (NVIDIA CUDA)
+# Install with: pip install -r requirements-gpu.txt
+
+# NVIDIA GPU support (CUDA 11.8)
+torch>=2.0,<2.5  # PyTorch with CUDA support
+--index-url https://download.pytorch.org/whl/cu118
+# Note: Update cu118 to cu121 if using CUDA 12.1
+
+# GPU memory optimization
+bitsandbytes>=0.41.0  # 4-bit and 8-bit quantization
+
+# GPU monitoring (optional)
+gputil>=1.4.0  # GPU utilization monitoring

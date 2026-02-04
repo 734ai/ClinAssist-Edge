@@ -1,0 +1,53 @@
+# ClinAssist Edge - Advanced Features
+# Core dependencies for state-of-the-art clinical AI
+
+# Base ML/DL Stack
+torch>=2.0.0
+transformers>=4.35.0
+peft>=0.7.0
+bitsandbytes>=0.41.0
+
+# Advanced RAG & Vector Search
+sentence-transformers>=2.2.0
+faiss-cpu>=1.7.4  # Use faiss-gpu if NVIDIA GPU available
+
+# Uncertainty & Probabilistic Methods
+scipy>=1.10.0
+numpy>=1.24.0
+
+# Multi-agent & Orchestration
+tenacity>=8.2.0  # Retry logic for agent calls
+
+# Drug Interaction & Knowledge
+sqlite3  # Built-in
+
+# Clinical/Medical Domain
+# (Placeholder for future medical NLP libraries)
+
+# UI & Visualization
+streamlit>=1.28.0
+matplotlib>=3.7.0
+plotly>=5.17.0
+
+# Data & Storage
+pandas>=2.0.0
+jsonlines>=3.1.0
+
+# Logging & Monitoring
+python-json-logger>=2.0.7
+
+# Development & Testing
+pytest>=7.4.0
+pytest-cov>=4.1.0
+
+# Hugging Face
+huggingface-hub>=0.19.0
+
+# Cryptography (for encrypted audit logs)
+cryptography>=41.0.0
+
+# Performance & Optimization
+pyarrow>=13.0.0
+
+# Optional: Federated Learning (future)
+# flower>=0.25.0

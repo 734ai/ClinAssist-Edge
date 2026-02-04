@@ -1,0 +1,16 @@
+# ClinAssist Edge - LoRA Fine-tuning & Advanced Features
+# Install with: pip install -r requirements-lora.txt
+
+# Fine-tuning dependencies
+peft>=0.4.0  # Parameter-Efficient Fine-Tuning
+datasets>=2.14.0  # Dataset handling
+huggingface-hub>=0.19.0  # Hugging Face Hub utilities
+tensorboard>=2.14.0  # Training visualization
+
+# Evaluation metrics
+evaluate>=0.4.0  # Model evaluation metrics
+rouge_score>=0.1.2  # ROUGE metrics for text generation
+bert_score>=0.3.13  # BERTScore for semantic similarity
+
+# Advanced logging
+wandb>=0.15.0  # Weights & Biases experiment tracking (optional)
