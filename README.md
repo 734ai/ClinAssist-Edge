@@ -1,54 +1,51 @@
-# ClinAssist Edge™
-### Privacy-First Clinical Intelligence Platform (Offline-Compatible)
-
----
+# ClinAssist Edge
+### Privacy-First Offline Clinical Intelligence Platform
 
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
 ![Status](https://img.shields.io/badge/status-production_ready-success.svg)
-![Security](https://img.shields.io/badge/security-data_encrypted-brand.svg)
-![Platform](https://img.shields.io/badge/platform-linux%20|%20edge-lightgrey.svg)
-![MedGemma](https://img.shields.io/badge/AI-MedGemma_2B-violet.svg)
 
-**ClinAssist Edge™** is an enterprise-grade, offline-first clinical AI co-pilot designed for high-stakes, low-resource environments. Built on the **MedGemma-2B** foundation model, it delivers state-of-the-art clinical reasoning, documentation automation, and safety monitoring without requiring internet connectivity or cloud dependency.
+**ClinAssist Edge** is an offline-first clinical decision support system designed for resource-constrained environments. Built on the **MedGemma-2B** foundation model, it provides differential diagnosis, automated documentation, and safety monitoring without requiring internet connectivity or cloud infrastructure.
 
----
+## System Architecture
 
-## 🏗️ Architecture
+The platform utilizes a modular, privacy-preserving architecture optimized for edge deployment on consumer hardware.
 
-The system utilizes a modular, privacy-preserving architecture optimized for edge deployment.
+**Core Components:**
+1.  **User Interface Layer**: A Streamlit-based frontend optimized for low-latency interaction and high-contrast visibility.
+2.  **Application Logic**: Python-based backend handling input validation, session state management, and template rendering.
+3.  **Inference Engine**: Local execution of the MedGemma-2B Large Language Model, supporting 4-bit and 8-bit quantization for reduced memory footprint.
+4.  **Safety & Ethics Module**: Rule-based gating mechanisms to detect and flag high-risk outputs (e.g., contraindicated prescriptions) before they reach the user.
+5.  **Retrieval-Augmented Generation (RAG)**: Vector database (FAISS) implementation for grounding model outputs in local, reliable medical guidelines.
 
 ```mermaid
 graph TD
-    User[Clinician] --> UI[Streamlit Interface (Defense Tech UI)]
-    UI --> Backend[Python Logic Layer]
+    User[Clinician] --> UI[Streamlit Interface]
+    UI --> Backend[Application Backend]
     Backend --> Safety[Safety & Ethics Gate]
-    Backend --> RAG[RAG System (FAISS/Chroma)]
+    Backend --> RAG[Local Knowledge Base]
     
-    subgraph "Core Inference Engine (Offline)"
-        Safety --> Model[MedGemma-2B (Quantized)]
+    subgraph "Offline Inference Engine"
+        Safety --> Model[MedGemma-2B]
         RAG --> Model
     end
     
-    Backend --> Logs[Audit Logs (Encrypted)]
+    Backend --> Logs[Encrypted Audit Logs]
     Model --> UI
 ```
 
-## 🚀 Key Capabilities
+## Key Capabilities
 
-| Feature | Description | Status |
-| :--- | :--- | :--- |
-| **Differential Diagnosis** | Probabilistic ranking of diagnoses with Bayesian uncertainty quantification. | ✅ Active |
-| **Drug Safety Engine** | Real-time analysis of Drug-Drug, Drug-Disease, and Allergy interactions. | ✅ Active |
-| **Generative Documentation** | Automated SOAP note generation from unstructured clinical notes. | ✅ Active |
-| **RAG Knowledge Base** | Retrieval-Augmented Generation using local, evidence-based guidelines. | ✅ Active |
-| **Patient Instruction** | Translation of medical jargon into plain language (Health Literacy < 8th grade). | ✅ Active |
+*   **Differential Diagnosis**: Generates ranked differential diagnoses with associated confidence scores using Bayesian uncertainty quantification.
+*   **Drug Safety Analysis**: Performs real-time checks for drug-drug interactions, disease contraindications, and known allergies.
+*   **Automated Documentation**: Converts unstructured clinical notes into standardized SOAP (Subjective, Objective, Assessment, Plan) formats.
+*   **Patient Education**: Translates complex medical terminology into plain language instructions suitable for patients with limited health literacy.
 
-## 🛠️ Installation & Deployment
+## Installation & Deployment
 
 ### Prerequisites
-- Python 3.10+
-- 4GB RAM (Minimum), 8GB (Recommended)
-- Linux/MacOS/Windows
+*   Python 3.10 or higher
+*   Minimum 4GB RAM (8GB recommended for optimal performance)
+*   Operating System: Linux, MacOS, or Windows
 
 ### Quick Start
 ```bash
@@ -59,24 +56,20 @@ cd ClinAssist-Edge
 # Install dependencies
 pip install -r requirements.txt
 
-# Run the platform
+# Launch the application
 streamlit run app/streamlit_app.py
 ```
 
-## 🛡️ Security & Compliance
+## Security & Compliance
 
-- **Data Sovereignty**: 100% local processing. No patient data leaves the device.
-- **Audit Trails**: Immutable logs of all AI interactions for clinical accountability.
-- **Fail-Safe Defaults**: Rule-based safety layers override model outputs in critical scenarios.
+*   **Data Sovereignty**: All processing occurs locally on the device; no patient data is transmitted to external servers.
+*   **Auditability**: The system maintains immutable, encrypted logs of all interactions to support clinical audit workflows.
+*   **Fail-Safe Design**: Safety layers are prioritized over model generation, ensuring that critical alerts suppress potentially unsafe AI suggestions.
 
-## 🤝 Contributing
+## License
 
-We welcome contributions from the medical and engineering communities. Please review `CONTRIBUTING.md` for our code of conduct and pull request guidelines.
-
-## 📄 License
-
-This software is licensed under the MIT License. See [LICENSE](LICENSE) for details.
+This project is licensed under the MIT License. See the LICENSE file for details.
 
 ---
 
-**Developed by ClinAssist Devs** | *Powering Healthcare at the Edge*
+**ClinAssist Devs** | *MedGemma Impact Challenge Submission*

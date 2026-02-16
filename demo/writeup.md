@@ -13,7 +13,7 @@
 - 🔍 **Differential Diagnosis & Red Flags** – Ranked diagnoses with clinical confidence and critical alerts
 - 📝 **SOAP Note Generation** – Automated, structured clinical documentation
 - 💬 **Patient Instructions** – Plain-language explanations to improve adherence and health literacy
-- 🛡️ **Tactical Edge UI** – Industrial-grade, minimalist dark mode optimized for low-light and high-stress clinical environments
+- **Optimized Clinical Interface** – High-contrast, minimal-latency interface designed for rapid data entry in austere, low-light environments.
 
 **Impact Scope**: Applicable to rural clinics, conflict zones, low-resource hospitals, and mobile health units globally. Estimated reach: 1B+ individuals in areas with limited healthcare infrastructure.
 
