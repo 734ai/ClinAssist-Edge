@@ -12,6 +12,8 @@ ClinAssist Edge is an offline-first, privacy-preserving AI assistant designed to
 - 🔍 **Differential Diagnosis & Red Flags** – Ranked diagnoses with risk assessment
 - 📝 **SOAP Note Generation** – Automated clinical documentation  
 - 💬 **Patient Instruction Translation** – Clear, actionable patient guidance
+- 🧠 **Advanced Reasoning** – RAG, Uncertainty Quantification, and Multi-Agent verification
+- 💊 **Drug Safety** – Interaction checking and contraindication alerts
 
 **Key Features**:
 - ✅ **100% Offline** – All inference runs locally; zero external API calls
@@ -205,6 +207,12 @@ For offline deployment, see [DEPLOYMENT.md](DEPLOYMENT.md).
 - **Mandatory Human Review**: UI enforces clinician review before action
 - **Comprehensive Audit Trails**: All inferences logged with timestamps and metadata
 - **Privacy Guarantees**: Zero external data transfer; all processing local
+
+### 5. Advanced Capabilities (New!)
+- **Retrieval-Augmented Generation (RAG)**: Connects to local medical knowledge base for evidence-backed answers.
+- **Uncertainty Quantification**: Bayesian methods to estimate confidence and flag low-confidence predictions.
+- **Explainability**: Saliency maps and rationales for every AI decision.
+- **Drug Interaction Checker**: Real-time safety validation against known drug-drug and drug-disease interactions.
 
 ---
 
