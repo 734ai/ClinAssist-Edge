@@ -38,166 +38,159 @@ st.set_page_config(
     }
 )
 
-# Custom CSS for Anduril/Palantir-style dark theme
+# Custom CSS for Defense Tech / Industrial Minimalist Theme
 st.markdown("""
 <style>
-    /* Base theme - Dark professional */
+    /* 
+       Theme: Defense Intelligence (Minimalist/Industrial)
+       Palette: Carbon, Slate, Tungsten, Electric Blue (low saturation)
+    */
     :root {
-        --primary-color: #00D4FF;
-        --secondary-color: #0F3460;
-        --accent-color: #FF006E;
-        --background-dark: #0A0E27;
-        --surface-dark: #16213E;
-        --text-primary: #E8F4F8;
-        --text-secondary: #90CAF9;
-        --success: #4ECB71;
-        --warning: #FFB81C;
-        --danger: #FF4444;
-        --info: #00D4FF;
+        --bg-color: #0B0C0E;
+        --surface-color: #17181A;
+        --border-color: #2D2F33;
+        --text-primary: #E0E1E6;
+        --text-secondary: #9CA1A9;
+        --accent-primary: #3B7298; /* Muted Industrial Blue */
+        --accent-success: #3D6E54; /* Muted Green */
+        --accent-warning: #9CA1A9; /* Monochromatic Warning */
+        --accent-danger: #8C3B3B; /* Muted Red */
+        --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
     }
     
-    /* Main background */
+    /* Main Layout */
     .stApp {
-        background: linear-gradient(135deg, #0A0E27 0%, #16213E 100%);
+        background-color: var(--bg-color);
         color: var(--text-primary);
+        font-family: 'Inter', sans-serif;
     }
     
-    /* Sidebar styling */
+    /* Sidebar */
     .stSidebar {
-        background: linear-gradient(180deg, #0F3460 0%, #16213E 100%);
-        border-right: 1px solid rgba(0, 212, 255, 0.1);
+        background-color: var(--surface-color);
+        border-right: 1px solid var(--border-color);
     }
     
-    /* Header title styling */
-    h1, h2, h3 {
+    /* Typography */
+    h1, h2, h3, h4, h5, h6 {
         color: var(--text-primary);
-        font-weight: 600;
-        letter-spacing: 0.5px;
+        font-weight: 500;
+        letter-spacing: -0.02em;
+        text-transform: uppercase;
+        font-size: 0.9em !important;
     }
     
-    /* Metric cards - glassmorphism effect */
+    h1 {
+        font-size: 1.5em !important;
+        border-bottom: 1px solid var(--border-color);
+        padding-bottom: 10px;
+        margin-bottom: 20px;
+    }
+    
+    p, label {
+        color: var(--text-secondary);
+        font-size: 0.95em;
+        letter-spacing: normal;
+    }
+    
+    /* Metrics / Heads-up Display Cards */
     .metric-card {
-        background: rgba(15, 52, 96, 0.4);
-        border: 1px solid rgba(0, 212, 255, 0.2);
-        border-radius: 12px;
-        padding: 16px;
-        backdrop-filter: blur(10px);
-        box-shadow: 0 8px 32px rgba(0, 212, 255, 0.1);
-        transition: all 0.3s ease;
+        background: var(--surface-color);
+        border: 1px solid var(--border-color);
+        border-left: 2px solid var(--accent-primary);
+        padding: 15px;
+        margin-bottom: 10px;
     }
     
-    .metric-card:hover {
-        border-color: rgba(0, 212, 255, 0.4);
-        box-shadow: 0 12px 48px rgba(0, 212, 255, 0.15);
-        transform: translateY(-2px);
+    .metric-value {
+        font-family: var(--font-mono);
+        font-size: 1.8em;
+        color: var(--text-primary);
+        font-weight: 400;
     }
     
-    /* Button styling - modern */
-    .stButton > button {
-        background: linear-gradient(135deg, #00D4FF 0%, #0087BE 100%);
-        color: #0A0E27;
-        border: none;
-        border-radius: 8px;
-        padding: 10px 24px;
-        font-weight: 600;
-        letter-spacing: 0.5px;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        box-shadow: 0 4px 15px rgba(0, 212, 255, 0.3);
+    .metric-label {
+        color: var(--text-secondary);
+        font-size: 0.75em;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
     }
     
-    .stButton > button:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 6px 25px rgba(0, 212, 255, 0.4);
-    }
-    
-    /* Input fields */
+    /* Inputs */
     .stTextInput > div > div > input,
     .stTextArea > div > div > textarea,
-    .stSelectbox > div > div > select,
-    .stNumberInput > div > div > input {
-        background: rgba(22, 33, 62, 0.6);
-        border: 1px solid rgba(0, 212, 255, 0.2);
+    .stSelectbox > div > div > select {
+        background-color: #121315;
+        border: 1px solid var(--border-color);
         color: var(--text-primary);
-        border-radius: 8px;
-        padding: 10px 12px;
-        transition: all 0.3s ease;
+        border-radius: 0px; /* Brutalist/Industrial */
+        font-family: var(--font-mono);
+        font-size: 0.9em;
     }
     
     .stTextInput > div > div > input:focus,
-    .stTextArea > div > div > textarea:focus,
-    .stSelectbox > div > div > select:focus,
-    .stNumberInput > div > div > input:focus {
-        border-color: var(--primary-color);
-        box-shadow: 0 0 20px rgba(0, 212, 255, 0.2);
+    .stTextArea > div > div > textarea:focus {
+        border-color: var(--accent-primary);
+        box-shadow: none;
     }
     
-    /* Tab styling */
+    /* Buttons */
+    .stButton > button {
+        background-color: transparent;
+        border: 1px solid var(--text-secondary);
+        color: var(--text-primary);
+        border-radius: 0px;
+        font-family: var(--font-mono);
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        font-size: 0.8em;
+        transition: all 0.2s;
+    }
+    
+    .stButton > button:hover {
+        background-color: var(--accent-primary);
+        border-color: var(--accent-primary);
+        color: #fff;
+    }
+    
+    /* Tabs */
     .stTabs [data-baseweb="tab-list"] {
-        background: rgba(15, 52, 96, 0.3);
-        border-bottom: 1px solid rgba(0, 212, 255, 0.1);
-        border-radius: 8px 8px 0 0;
-        gap: 4px;
+        background-color: transparent;
+        border-bottom: 1px solid var(--border-color);
+        gap: 20px;
     }
     
     .stTabs [data-baseweb="tab"] {
-        border-radius: 8px;
+        background-color: transparent;
+        border: none;
         color: var(--text-secondary);
-        border: 1px solid transparent;
-        padding: 12px 16px;
-        transition: all 0.3s ease;
+        font-family: var(--font-mono);
+        text-transform: uppercase;
+        font-size: 0.8em;
+        padding-bottom: 10px;
     }
     
     .stTabs [data-baseweb="tab"][aria-selected="true"] {
-        background: linear-gradient(135deg, #00D4FF 0%, #0087BE 100%);
-        color: #0A0E27;
-        border: 1px solid var(--primary-color);
-        box-shadow: 0 4px 15px rgba(0, 212, 255, 0.3);
+        color: var(--accent-primary);
+        border-bottom: 2px solid var(--accent-primary);
     }
     
-    /* Expander styling */
-    .streamlit-expanderHeader {
-        background: rgba(15, 52, 96, 0.4);
-        border: 1px solid rgba(0, 212, 255, 0.1);
-        border-radius: 8px;
-        transition: all 0.3s ease;
+    /* Alerts/Status */
+    .stSuccess, .stInfo, .stWarning, .stError {
+        background-color: var(--surface-color);
+        border: 1px solid var(--border-color);
+        color: var(--text-primary);
+        border-radius: 0;
+        border-left-width: 3px;
     }
     
-    .streamlit-expanderHeader:hover {
-        border-color: rgba(0, 212, 255, 0.3);
-        background: rgba(15, 52, 96, 0.6);
-    }
-    
-    /* Alert boxes */
-    .stSuccess {
-        background: rgba(78, 203, 113, 0.1);
-        border: 1px solid var(--success);
-        border-radius: 8px;
-        padding: 12px 16px;
-    }
-    
-    .stWarning {
-        background: rgba(255, 184, 28, 0.1);
-        border: 1px solid var(--warning);
-        border-radius: 8px;
-        padding: 12px 16px;
-    }
-    
-    .stError {
-        background: rgba(255, 68, 68, 0.1);
-        border: 1px solid var(--danger);
-        border-radius: 8px;
-        padding: 12px 16px;
-    }
-    
-    .stInfo {
-        background: rgba(0, 212, 255, 0.1);
-        border: 1px solid var(--info);
-        border-radius: 8px;
-        padding: 12px 16px;
-    }
-    
-    /* Progress bars */
+    .stSuccess { border-left-color: var(--accent-success); }
+    .stInfo { border-left-color: var(--accent-primary); }
+    .stWarning { border-left-color: var(--accent-warning); }
+    .stError { border-left-color: var(--accent-danger); }
+
+</style>
+""", unsafe_allow_html=True)
     .stProgress > div > div > div {
         background: linear-gradient(90deg, #00D4FF 0%, #4ECB71 100%);
         border-radius: 8px;
@@ -1062,7 +1055,7 @@ with tab6:
 
 # ===== TAB 7: Learning & Feedback =====
 with tab7:
-    st.markdown('<div class="fade-in">', unsafe_after_html=True)
+    st.markdown('<div class="fade-in">', unsafe_allow_html=True)
     
     if advanced_modules['learning']:
         st.markdown("""
