@@ -225,7 +225,7 @@ python model/lora_finetune.py --dataset synthetic_data.jsonl --output lora_fine_
 - **Deployment Guide**: `DEPLOYMENT.md` (see project root)
 - **API Documentation**: Inline code comments in `model/`, `app/`, `utils/`
 
-**Funding & Acknowledgments**: Team: ClinAssist Devs | Members: Muzan Sano | Affiliation: Independent Researchers
+**Funding & Acknowledgments**: Team: UNIT737 (ClinAssist Devs) | Members: Muzan Sano | Affiliation: Independent Researchers
 
 ---
 

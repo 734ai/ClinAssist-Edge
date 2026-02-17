@@ -26,6 +26,15 @@ from model.quick_infer import infer
 from model.safety_checks import perform_safety_check
 from utils.logger import log_inference
 
+# Try to import advanced modules
+try:
+    from model.rag_system import initialize_default_knowledge_base
+    from model.uncertainty import BayesianUncertaintyQuantifier
+    from model.drug_interactions import DrugInteractionChecker, format_safety_report
+    ADVANCED_AVAILABLE = True
+except ImportError:
+    ADVANCED_AVAILABLE = False
+
 
 # ANSI color codes for terminal output
 class Colors:
@@ -314,6 +323,75 @@ into clear, actionable instructions that improve patient compliance and outcomes
     print(output2)
 
 
+def demo_advanced_features() -> None:
+    """Demo: Advanced Features (RAG, Uncertainty, Drug Safety)."""
+    if not ADVANCED_AVAILABLE:
+        print_warning("Advanced features not available (missing dependencies). Skipping.")
+        return
+
+    print_header("DEMO 4: ADVANCED CAPABILITIES (NEW!)")
+    
+    print(f"""
+{Colors.BOLD}Scenario:{Colors.ENDC}
+Beyond standard inference, ClinAssist Edge now features state-of-the-art capabilities:
+1. RAG: Evidence-backed answers from local medical guidelines
+2. Uncertainty: Bayesian confidence estimation
+3. Drug Safety: Real-time interaction checking
+    """)
+    
+    # 1. RAG Demo
+    print_section("Retrieval-Augmented Generation (RAG)")
+    print("Initializing local knowledge base...")
+    kb = initialize_default_knowledge_base()
+    
+    query = "treatment for malaria"
+    print(f"Querying knowledge base: '{query}'")
+    results = kb.retrieve(query, top_k=1)
+    
+    if results:
+        res = results[0]
+        print(f"\n{Colors.OKGREEN}Found Evidence:{Colors.ENDC}")
+        print(f"Source: {res.source} (Relevance: {res.relevance_score:.2%})")
+        print(f"Content: {res.content}")
+    
+    # 2. Uncertainty Demo
+    print("\n" + "-"*70 + "\n")
+    print_section("Bayesian Uncertainty Quantification")
+    
+    quantifier = BayesianUncertaintyQuantifier()
+    # Simulate logits for a high-confidence prediction
+    import numpy as np
+    logits = np.array([2.5, 0.5, 0.2, 0.1]) 
+    
+    print("Analyzing prediction confidence...")
+    estimate = quantifier.estimate_uncertainty(
+        prediction="Pneumonia",
+        logits=logits,
+        supporting_evidence=["Fever", "Cough"],
+        alternative_diagnoses=[("Bronchitis", 0.15)]
+    )
+    
+    print(f"Prediction: {estimate.prediction}")
+    print(f"Confidence: {estimate.confidence:.1%}")
+    print(f"Risk Level: {estimate.risk_level}")
+    print(f"Explanation: {estimate.explanation}")
+    
+    # 3. Drug Safety Demo
+    print("\n" + "-"*70 + "\n")
+    print_section("Medication Safety Check")
+    
+    checker = DrugInteractionChecker()
+    meds = ["warfarin", "aspirin"]
+    print(f"Checking interactions for: {', '.join(meds)}")
+    
+    interactions = checker.check_drug_drug_interactions(meds)
+    
+    for i in interactions:
+        print(f"{Colors.FAIL}⚠ {i.severity.value} INTERACTION:{Colors.ENDC} {i.drug1} + {i.drug2}")
+        print(f"   Mechanism: {i.mechanism}")
+        print(f"   Recommendation: {i.recommendation}")
+
+
 def main() -> None:
     """Main demo execution."""
     print(f"""
@@ -348,6 +426,7 @@ All inferences are performed locally without external API calls.
         demo_differential_diagnosis(model, tokenizer)
         demo_soap_notes(model, tokenizer)
         demo_patient_instructions(model, tokenizer)
+        demo_advanced_features()
         
         # Closing message
         print_header("DEMO COMPLETE")

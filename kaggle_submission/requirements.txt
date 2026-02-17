@@ -1,29 +1,53 @@
-
-# ClinAssist Edge - Core Dependencies
+# MedGemma Impact Challenge - Core Dependencies
 # Python 3.9+
 
 # Core Model & Inference Dependencies
-torch>=2.0  # PyTorch for model inference
-transformers>=4.40.0,<4.50.0  # Hugging Face transformers
-accelerate>=0.20.0  # Multi-GPU and mixed-precision support
-safetensors>=0.4.0  # Efficient model serialization
+torch>=2.0.0
+transformers>=4.40.0,<4.50.0
+accelerate>=0.20.0
+safetensors>=0.4.0
+bitsandbytes>=0.41.0  # Optimized inference
 
 # NLP & Text Processing
-sentencepiece>=0.1.99  # Tokenization
-peft>=0.4.0  # Parameter-Efficient Fine-Tuning (LoRA support)
+sentencepiece>=0.1.99
+peft>=0.7.0  # LoRA support
+
+# Advanced RAG & Vector Search
+sentence-transformers>=2.2.0
+faiss-cpu>=1.7.4  # Vector database
+
+# Uncertainty & Probabilistic Methods
+scipy>=1.10.0
+numpy>=1.24.0
+
+# Multi-agent & Orchestration
+tenacity>=8.2.0
 
 # UI & Visualization
-streamlit>=1.28.0,<1.35.0  # Streamlit web app framework
-gradio>=3.40.0  # Alternative UI framework
+streamlit>=1.28.0,<1.35.0
+gradio>=3.40.0
+matplotlib>=3.7.0
+plotly>=5.17.0
 
-# Data & Processing
-datasets>=2.14.0  # Hugging Face datasets library
-pandas>=1.5.0  # Data manipulation
-scikit-learn>=1.3.0  # Machine learning utilities
+# Data & Storage
+datasets>=2.14.0
+pandas>=2.0.0
+scikit-learn>=1.3.0
+jsonlines>=3.1.0
+pyarrow>=13.0.0
 
 # Environment & Configuration
-python-dotenv>=1.0.0  # Load environment variables
+python-dotenv>=1.0.0
 
-# Logging & Utilities
-requests>=2.31.0  # HTTP library
-tqdm>=4.66.0  # Progress bars
+# Logging & Monitoring
+requests>=2.31.0
+tqdm>=4.66.0
+python-json-logger>=2.0.7
+
+# Cryptography & Security
+cryptography>=41.0.0
+
+# Development
+pytest>=7.4.0
+pytest-cov>=4.1.0
+huggingface-hub>=0.19.0
